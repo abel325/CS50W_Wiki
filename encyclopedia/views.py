@@ -25,3 +25,20 @@ def entries(request, name):
             "title": "Error 404",
             "entry": "<h1 style='text-align: center;'> Error 404: file not found </h1>"
         })
+    
+
+def search(request):
+    query = request.GET.get('q')
+    if query and not util.get_entry(query):
+        return HttpResponseRedirect(reverse('search_results', kwargs={'query': query}))
+    elif not query:
+        return HttpResponseRedirect(reverse('index'))
+    
+    return HttpResponseRedirect(reverse('entries', kwargs={'name': query}))
+
+
+def search_results(request, query):
+    return render(request, "encyclopedia/search_results.html", {
+        "query": query,
+        "entries": util.list_entries(),
+    })
