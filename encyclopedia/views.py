@@ -28,7 +28,7 @@ def entries(request, name):
     
 
 def search(request):
-    query = request.GET.get('q')
+    query = request.GET.get('q').strip()
     if query and not util.get_entry(query):
         return HttpResponseRedirect(reverse('search_results', kwargs={'query': query}))
     elif not query:
