@@ -3,14 +3,15 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django import forms
 import markdown2
+from django.core.files.storage import default_storage
 
 from . import util
 
-class NewPageForm(forms.Form):
-    title = forms.CharField(label="Title", widget=forms.TextInput(attrs={'id': 'npf-title-input', 'class': 'form-control', 'name': 'title'}))
-    description = forms.CharField(label="Description", widget=forms.Textarea(attrs={'id': 'npf-description-area', 'class': 'form-control', 'name': 'description'}), required=False)
-    button = forms.CharField(label="", widget=forms.TextInput(attrs={'id': 'npf-button', 'class': 'btn btn-primary', 'type': 'submit', 'value': 'Create Page'}))
 
+class PageForm(forms.Form):
+    title = forms.CharField(label="Title", widget=forms.TextInput(attrs={'id': 'pf-title-input', 'class': 'form-control', 'name': 'title'}))
+    description = forms.CharField(label="Description", widget=forms.Textarea(attrs={'id': 'pf-description-area', 'class': 'form-control', 'name': 'description'}), required=False)
+    # button = forms.CharField(label="", widget=forms.TextInput(attrs={'id': 'pf-button', 'class': 'btn btn-primary', 'type': 'submit', 'value': 'Submit'}))
 
 
 def index(request):
@@ -25,7 +26,7 @@ def entries(request, name):
         htmlEntry = markdown2.markdown(entry)
         return render(request, "encyclopedia/entries.html", {
             "title": name,
-            "entry": htmlEntry
+            "entry": htmlEntry,
         })
     else:
         return render(request, "encyclopedia/entries.html", {
@@ -55,7 +56,7 @@ def search_results(request, query):
 
 def new_page(request):
     if request.method == "POST":
-        form = NewPageForm(request.POST)
+        form = PageForm(request.POST)
 
         if form.is_valid():
             title = form.cleaned_data["title"]
@@ -66,7 +67,7 @@ def new_page(request):
                 return render(request, "encyclopedia/new_page.html", {
                     "form": form
                 })
-
+            
             util.save_entry(title, dsc)
             return HttpResponseRedirect(reverse("entries", kwargs={'name': title}))
         else: 
@@ -75,5 +76,45 @@ def new_page(request):
             })
     
     return render(request, "encyclopedia/new_page.html", {
-        "form": NewPageForm()
+        "form": PageForm()
+    })
+
+
+def edit_page(request):
+    if request.method == "POST":
+        form = PageForm(request.POST)     
+        old_title = request.POST.get('old-title') 
+
+        if form.is_valid():
+            title = form.cleaned_data["title"]
+            dsc = form.cleaned_data["description"]
+
+            if util.get_entry(title) and title != old_title:
+                if not old_title:
+                    form.add_error('title', 'A page with this name already exists')
+                    return render(request, "encyclopedia/edit_page.html", {
+                        "form": form
+                    })
+                return HttpResponseRedirect(reverse('index'))
+            
+            filename = f"entries/{old_title}.md"
+            if default_storage.exists(filename):
+                default_storage.delete(filename)
+            else:
+                return HttpResponseRedirect(reverse('index'))
+            util.save_entry(title, dsc)
+            return HttpResponseRedirect(reverse("entries", kwargs={"name": title}))
+        else:
+            return render(request, "encyclopedia/edit_page.html", {
+                "form": form,
+                "old_title": old_title
+            })
+
+    title = request.GET.get('title')
+    dsc = util.get_entry(title)
+    form = PageForm(initial={'title': title, 'description': dsc})
+
+    return render(request, "encyclopedia/edit_page.html", {
+        "form": form,
+        "old_title": title
     })

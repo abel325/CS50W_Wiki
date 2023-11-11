@@ -8,4 +8,5 @@ urlpatterns = [
     path("search/", views.search, name="search"),
     path("search_results/<str:query>", views.search_results, name="search_results"),
     path("new_page/", views.new_page, name="new_page"),
+    path("edit_page/", views.edit_page, name="edit_page"),
 ]
