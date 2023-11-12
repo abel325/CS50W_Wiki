@@ -4,6 +4,7 @@ from django.urls import reverse
 from django import forms
 import markdown2
 from django.core.files.storage import default_storage
+from random import choice
 
 from . import util
 
@@ -11,7 +12,6 @@ from . import util
 class PageForm(forms.Form):
     title = forms.CharField(label="Title", widget=forms.TextInput(attrs={'id': 'pf-title-input', 'class': 'form-control', 'name': 'title'}))
     description = forms.CharField(label="Description", widget=forms.Textarea(attrs={'id': 'pf-description-area', 'class': 'form-control', 'name': 'description'}), required=False)
-    # button = forms.CharField(label="", widget=forms.TextInput(attrs={'id': 'pf-button', 'class': 'btn btn-primary', 'type': 'submit', 'value': 'Submit'}))
 
 
 def index(request):
@@ -117,3 +117,9 @@ def edit_page(request):
         "form": form,
         "old_title": title
     })
+
+
+def random_page(request):
+    entries = util.list_entries()
+    randp = choice(entries)
+    return HttpResponseRedirect(reverse('entries', kwargs={'name': randp}))
