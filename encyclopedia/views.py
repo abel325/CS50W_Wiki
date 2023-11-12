@@ -90,12 +90,11 @@ def edit_page(request):
             dsc = form.cleaned_data["description"]
 
             if util.get_entry(title) and title != old_title:
-                if not old_title:
-                    form.add_error('title', 'A page with this name already exists')
-                    return render(request, "encyclopedia/edit_page.html", {
-                        "form": form
-                    })
-                return HttpResponseRedirect(reverse('index'))
+                form.add_error('title', 'A page with this name already exists')
+                return render(request, "encyclopedia/edit_page.html", {
+                    "form": form,
+                    "old_title": old_title
+                })
             
             filename = f"entries/{old_title}.md"
             if default_storage.exists(filename):
