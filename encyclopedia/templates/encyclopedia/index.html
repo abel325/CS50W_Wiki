@@ -4,13 +4,16 @@
     Encyclopedia
 {% endblock %}
 
-{% block body %}
-    <h1 class="p-title">All Pages</h1>
 
-    <ul class="entries-list">
-        {% for entry in entries %}
-            <li class="entry"><a href="wiki/{{ entry }}">{{ entry }}</a></li>
-        {% endfor %}
-    </ul>
+{% block body %}
+
+    <div id="container">
+        <h1 id="p-title">All Pages</h1>
+        <ul id="entries-list">
+            {% for entry in entries %}
+                <li class="entry"><a href="wiki/{{ entry }}">{{ entry }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
 
 {% endblock %}

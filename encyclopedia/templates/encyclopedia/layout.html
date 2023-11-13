@@ -1,36 +1,62 @@
 {% load static %}
-
+    
 <!DOCTYPE html>
-
 <html lang="en">
-    <head>
-        <title>{% block title %}{% endblock %}</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link href="{% static 'encyclopedia/styles.css' %}" rel="stylesheet">
-    </head>
-    <body>
-        <div class="row">
-            <div class="sidebar col-lg-2 col-md-3">
-                <h2>Wiki</h2>
-                <form action="{% url 'search' %}">
-                    <input class="search" type="text" name="q" placeholder="Search Encyclopedia">
-                </form>
-                <div>
-                    <a href="{% url 'index' %}">Home</a>
-                </div>
-                <div>
-                    <a href="{% url 'new_page' %}">Create New Page</a>
-                </div>
-                <div>
-                    <a href="{% url 'random_page' %}">Random Page</a>
-                </div>
-                {% block nav %}
-                {% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link href="{% static 'encyclopedia/styles.css' %}" rel="stylesheet">
+</head>
+<body>
+
+    <nav id="navbar">
+
+        <div id="nav-container">
+
+            <div id="logo"><a href="{% url 'index' %}">Wiki</a></div>
+            <form action="{% url 'search' %}">
+                <input type="text" id="search" name="q" placeholder="Search Encyclopedia">
+            </form>
+            <div id="nav-links">
+                <a href="{% url 'index' %}" class="link">Home</a>
+                <a href="{% url 'new_page' %}" class="link">Create New Page</a>
+                <a href="{% url 'random_page' %}" class="link">Random Page</a>
             </div>
-            <div class="main col-lg-10 col-md-9">
-                {% block body %}
-                {% endblock %}
+
+            <div id="dropdown">
+                <button id="menu-btn" onclick="toggleMenu()"><img src="{% static 'encyclopedia/icons8-menu-40.png' %}" alt="Menu Button"></button>
+                <div id="dropdown_content-wrapper">
+                    <div id="dropdown-content">
+                        <a href="{% url 'index' %}" class="link">Home</a>
+                        <a href="{% url 'new_page' %}" class="link">Create New Page</a>
+                        <a href="{% url 'random_page' %}" class="link">Random Page</a>
+                    </div>
+                </div>
             </div>
+
         </div>
-    </body>
+
+    </nav>
+    
+
+    <section id="body-block">
+        {% block body %}
+        {% endblock %}
+    </section>
+
+
+    <script>
+        function toggleMenu() {
+            const contentWrapper = document.getElementById('dropdown_content-wrapper');
+
+            if (contentWrapper.style.display === "none") {
+                contentWrapper.style.display = "block";
+            } else {
+                contentWrapper.style.display = "none";
+            }
+        }
+    </script>
+</body>
 </html>
+
