@@ -123,3 +123,7 @@ def random_page(request):
     entries = util.list_entries()
     randp = choice(entries)
     return HttpResponseRedirect(reverse('entries', kwargs={'name': randp}))
+
+
+def styled(request):
+    return render(request, "encyclopedia/styled.html")
