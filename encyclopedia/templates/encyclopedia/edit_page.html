@@ -6,15 +6,17 @@
 
 {% block body %}
     
-    <h1 style="text-align: center;">Edit Page</h1>
-    <form action="{% url 'edit_page' %}" method="post" id="ep-form">
+    <div id="npe-container">
+        <h1 id="npe-title">Edit Page</h1>
+        <form action="{% url 'edit_page' %}" method="post" id="p-form">
         
-        {% csrf_token %} 
+            {% csrf_token %}
         
-        {{ form }}
-        <input type="hidden" name="old-title" value="{{ old_title }}">
-        <input type="submit" value="Submit Edit" id="pf-button" class="btn btn-primary">
-    
-    </form>
+            {{ form }}
+            <input type="hidden" name="old-title" value="{{ old_title }}">
+            <input type="submit" value="Submit Edit" id="pf-button">
+        
+        </form>
+    </div>
     
 {% endblock %}

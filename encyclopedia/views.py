@@ -10,8 +10,8 @@ from . import util
 
 
 class PageForm(forms.Form):
-    title = forms.CharField(label="Title", widget=forms.TextInput(attrs={'id': 'pf-title-input', 'class': 'form-control', 'name': 'title'}))
-    description = forms.CharField(label="Description", widget=forms.Textarea(attrs={'id': 'pf-description-area', 'class': 'form-control', 'name': 'description'}), required=False)
+    title = forms.CharField(label="Title", widget=forms.TextInput(attrs={'id': 'pf-title-input', 'name': 'title'}))
+    description = forms.CharField(label="Description", widget=forms.Textarea(attrs={'id': 'pf-description-area', 'name': 'description'}), required=False)
 
 
 def index(request):
