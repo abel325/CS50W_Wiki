@@ -5,7 +5,8 @@
 }
 
 body {
-    font-size: 18px;
+    font-size: 16px;
+    font-family: sans-serif;
 }
 
 /* <===================================================================> */
@@ -105,7 +106,6 @@ body {
     align-items: center;
     background: linear-gradient(#f0f0f0, #ffffff);
     min-width: 100%;
-    padding-top: 10px;
     top: 60px;
     position: sticky;
     border-radius: 6px;
@@ -113,7 +113,7 @@ body {
 }
 
 #dropdown-content .link {
-    line-height: 2.5;
+    line-height: 3;
     width: 100%;
     text-align: center;
 }
