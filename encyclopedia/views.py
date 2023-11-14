@@ -23,7 +23,7 @@ def index(request):
 def entries(request, name):
     entry = util.get_entry(name)
     if entry != None:
-        htmlEntry = markdown2.markdown(entry)
+        htmlEntry = markdown2.markdown(entry, extras=["fenced-code-blocks"]) # edit
         return render(request, "encyclopedia/entries.html", {
             "title": name,
             "entry": htmlEntry,
