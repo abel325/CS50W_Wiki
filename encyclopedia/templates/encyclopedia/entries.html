@@ -7,9 +7,16 @@
 {% block body %}
     <div id="dsc-container">
         {{ entry | safe }}
-        <form action="{% url 'edit_page' %}" method="get">
-            <input type="hidden" name="title" value="{{ title }}">
-            <input {{ hidden }} type="submit" value="Edit Page" id="submit-btn">
-        </form>
+        <div id="ed-btns-container">
+            <form action="{% url 'edit_page' %}" method="get">
+                <input type="hidden" name="title" value="{{ title }}">
+                <input {{ hidden }} type="submit" value="Edit Page" id="submit-btn">
+            </form>
+            <form action="{% url 'confirm_delete' title %}" method="get">
+                {% csrf_token %}
+                <!-- <input type="hidden" name="title" value="{{ title }}"> -->
+                <input {{ hidden }} type="submit" value="Delete Page" id="delete-btn">
+            </form>
+        </div>
     </div>
 {% endblock %}

@@ -213,6 +213,26 @@ body::-webkit-scrollbar-button:end:increment {
     text-decoration: underline;
 }
 
+#dsc-container #delete-btn {
+    font-size: 15px;
+    color: #fff;
+    background-color: #ea4335;
+    margin: 20px 0;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+}
+
+#dsc-container #delete-btn:hover {
+    cursor: pointer;
+    background-color: #e12717;;
+}
+
+#ed-btns-container {
+    display: flex;
+    justify-content: space-between;
+}
+
 /* <===================================================================> */
 /* For New Page and Edit Page */
 

@@ -124,3 +124,19 @@ def random_page(request):
     entries = util.list_entries()
     randp = choice(entries)
     return HttpResponseRedirect(reverse('entries', kwargs={'name': randp}))
+
+
+def delete_page(request, title):
+    if request.method == 'GET':
+        # title = request.POST.get('title')
+        util.delete_entry(title)
+        return HttpResponseRedirect(reverse('index'))
+    # return HttpResponseRedirect(reverse('confirm_delete', kwargs={"title": title}))
+
+def confirm_delete(request, title):
+    if request.method == 'POST':
+        # title = request.POST.get('title')
+        return HttpResponseRedirect(reverse('delete_page', kwargs={'title': title}))
+    
+    title = request.GET.get('title')
+    return render(request, "encyclopedia/confirm_delete.html", {"title": title})
