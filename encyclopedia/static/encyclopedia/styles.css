@@ -4,14 +4,12 @@
     padding: 0;
 }
 
-html {
-    height: 100vh;
-}
-
 body {
     font-size: 18px;
-    height: 100%;
 }
+
+/* <===================================================================> */
+/* Navbar */
 
 #navbar {
     background-color: #f0f0f0;
@@ -63,8 +61,11 @@ body {
 
 #search {
     height: 50%;
+    width: 300px;
     padding: 0 5px;
     outline: none;
+    border: solid 1px #afafaf;
+    border-radius: 6px;
 }
 
 #nav-links {
@@ -114,6 +115,7 @@ body {
 }
 
 /* <===================================================================> */
+/* Index and Searrch Results Body */
 
 #body-block #container {
     max-width: 100%;
@@ -257,10 +259,17 @@ body {
 }
 
 /* <===================================================================> */
+/* Navbar media queries */
 
-@media (max-width: 878px) {
+@media (max-width: 1023px) {
     #navbar form {
         flex: 1;
+    }
+}
+
+@media (max-width: 738px) {
+    #search {
+        width: 100%;
     }
 }
 
@@ -276,9 +285,4 @@ body {
     #nav-links {
         display: none;
     }
-
-    #search {
-        width: 100%;
-    }
-
 }
