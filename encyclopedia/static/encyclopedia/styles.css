@@ -364,6 +364,16 @@ body::-webkit-scrollbar-button:end:increment {
     background-color: #e12717;;
 }
 
+@media (max-width: 300px) {
+    #edp-btns {
+        flex-direction: column;
+    }
+
+    #p-form #pf-button {
+        align-self: center;
+    }
+}
+
 /* <===================================================================> */
 /* For Confirm Delete Page */
 
