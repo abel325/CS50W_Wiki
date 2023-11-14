@@ -186,10 +186,26 @@ body::-webkit-scrollbar-button:end:increment {
 /* <===================================================================> */
 /* For Entry Page */
 
-#dsc-container {
+/* #dsc-container {
     padding: 20px;
     line-height: 1.5;
     font-size: 18px;
+} */
+
+#dsc-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 20px;
+}
+
+#dsc-container #dsc-card {
+    box-shadow: 5px 5px 10px 5px rgba(170, 170, 170, 0.2);
+    border-radius: 6px;
+    line-height: 1.5;
+    width: 100%;
+    padding: 20px;
 }
 
 #dsc-container ul, ol {
@@ -200,7 +216,7 @@ body::-webkit-scrollbar-button:end:increment {
     font-size: 15px;
     color: #fff;
     background-color: #2e7ffe;
-    margin: 20px 0;
+    margin-top: 20px;
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
@@ -225,7 +241,8 @@ body::-webkit-scrollbar-button:end:increment {
     font-size: 15px;
     color: #fff;
     background-color: #ea4335;
-    margin: 20px 0;
+    margin-top: 20px;
+
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
@@ -239,6 +256,13 @@ body::-webkit-scrollbar-button:end:increment {
 #ed-btns-container {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+@media (max-width: 300px) {
+    #ed-btns-container {
+        flex-direction: column;
+    }
 }
 
 /* <===================================================================> */
@@ -303,7 +327,7 @@ body::-webkit-scrollbar-button:end:increment {
     font-size: 15px;
     color: #fff;
     background-color: #2e7ffe;
-    margin: 10px 0;
+    margin-top: 20px;
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
@@ -328,7 +352,7 @@ body::-webkit-scrollbar-button:end:increment {
     font-size: 15px;
     color: #fff;
     background-color: #ea4335;
-    margin: 10px 0;
+    margin-top: 20px;
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
@@ -378,7 +402,7 @@ body::-webkit-scrollbar-button:end:increment {
     font-size: 15px;
     color: #fff;
     background-color: #ea4335;
-    margin: 10px 0;
+    margin-top: 20px;
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
@@ -394,7 +418,7 @@ body::-webkit-scrollbar-button:end:increment {
     font-size: 15px;
     color: #fff;
     background-color: #2e7ffe;
-    margin: 10px 0;
+    margin-top: 20px;
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
