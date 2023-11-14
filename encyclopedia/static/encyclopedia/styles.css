@@ -85,11 +85,21 @@ body {
 }
 
 #dropdown_content-wrapper {
-    display: none;
     position: absolute;
     left: 0;
     width: 100%;
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility 0.5s ease-in-out, opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    transform: translateY(-10px);
 }
+
+#dropdown_content-wrapper.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
 #dropdown-content {
     display: flex;
@@ -184,7 +194,7 @@ body::-webkit-scrollbar-button:end:increment {
     font-size: 18px;
 }
 
-#dsc-container ul {
+#dsc-container ul, ol {
     list-style-position: inside;
 }
 

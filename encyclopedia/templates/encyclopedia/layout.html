@@ -48,13 +48,7 @@
     
     <script>
         function toggleMenu() {
-            const contentWrapper = document.getElementById('dropdown_content-wrapper');
-
-            if (contentWrapper.style.display === "none") {
-                contentWrapper.style.display = "block";
-            } else {
-                contentWrapper.style.display = "none";
-            }
+            document.getElementById('dropdown_content-wrapper').classList.toggle("show");
         }
     </script>
 </body>
