@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 from django.urls import reverse
 from django import forms
 import markdown2
@@ -127,16 +127,12 @@ def random_page(request):
 
 
 def delete_page(request, title):
-    if request.method == 'GET':
-        # title = request.POST.get('title')
+    if request.method == 'POST':
         util.delete_entry(title)
         return HttpResponseRedirect(reverse('index'))
-    # return HttpResponseRedirect(reverse('confirm_delete', kwargs={"title": title}))
+    raise Http404("Page not found")
 
 def confirm_delete(request, title):
     if request.method == 'POST':
-        # title = request.POST.get('title')
-        return HttpResponseRedirect(reverse('delete_page', kwargs={'title': title}))
-    
-    title = request.GET.get('title')
-    return render(request, "encyclopedia/confirm_delete.html", {"title": title})
+        return render(request, "encyclopedia/confirm_delete.html", {"title": title})
+    raise Http404("Page not found")

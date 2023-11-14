@@ -100,7 +100,6 @@ body {
     transform: translateY(0);
 }
 
-
 #dropdown-content {
     display: flex;
     flex-direction: column;
@@ -312,6 +311,73 @@ body::-webkit-scrollbar-button:end:increment {
 }
 
 #p-form #pf-button:hover {
+    cursor: pointer;
+    background-color: #146eff;
+}
+
+/* <===================================================================> */
+/* For Confirm Delete Page */
+
+#cd-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: center;
+    padding: 20px 20px;
+}
+
+#cd-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px 20px;
+    justify-content: space-between;
+    box-shadow: 5px 5px 10px 5px rgba(170, 170, 170, 0.2);
+    border-radius: 6px;
+}
+
+#cd-form #cd-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#cd-form #cd-btns {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#cd-btns #yes-btn {
+    min-width: 100px;
+    font-size: 15px;
+    color: #fff;
+    background-color: #ea4335;
+    margin: 10px 0;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+}
+
+#cd-btns #yes-btn:hover {
+    cursor: pointer;
+    background-color: #e12717;;
+}
+
+#cd-btns #no-btn {
+    min-width: 100px;
+    font-size: 15px;
+    color: #fff;
+    background-color: #2e7ffe;
+    margin: 10px 0;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+}
+
+#cd-btns #no-btn:hover {
     cursor: pointer;
     background-color: #146eff;
 }
