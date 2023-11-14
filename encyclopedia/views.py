@@ -31,7 +31,8 @@ def entries(request, name):
     else:
         return render(request, "encyclopedia/entries.html", {
             "title": "Error 404",
-            "entry": "<h1 style='text-align: center;'> Error 404: file not found </h1>"
+            "entry": "<h1 style='text-align: center; font-size: 46px'> Error 404: file not found </h1>",
+            "hidden": "hidden",
         })
     
 
