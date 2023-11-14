@@ -23,7 +23,23 @@ def index(request):
 def entries(request, name):
     entry = util.get_entry(name)
     if entry != None:
-        htmlEntry = markdown2.markdown(entry, extras=["cuddled-lists", "fenced-code-blocks", "footnotes", "header-ids", "tables", "spoiler", "toc", "wiki-tables", "break-on-newline", "link_patterns", "spoiler", "target-blank-links", "tg-spoiler", "task_list", "mermaid"]) # edit
+        htmlEntry = markdown2.markdown(entry, 
+        extras=
+        ["cuddled-lists",
+        "fenced-code-blocks",
+        "footnotes",
+        "header-ids",
+        "tables",
+        "spoiler",
+        "toc",
+        "wiki-tables",
+        "break-on-newline",
+        "link_patterns",
+        "spoiler",
+        "target-blank-links",
+        "tg-spoiler",
+        "task_list",
+        "mermaid"])
         return render(request, "encyclopedia/entries.html", {
             "title": name,
             "entry": htmlEntry,
