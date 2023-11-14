@@ -8,14 +8,16 @@
     
     <div id="npe-container">
         <h1 id="npe-title">Edit Page</h1>
-        <form action="{% url 'edit_page' %}" method="post" id="p-form">
+        <form action="{% url 'edit_page' %}" method="post" id="p-form" autocomplete="off">
         
             {% csrf_token %}
         
             {{ form }}
             <input type="hidden" name="old-title" value="{{ old_title }}">
-            <input type="submit" value="Submit Edit" id="pf-button">
-            <!-- <a href="{% url 'entries' name=old_title %}">Cancel</a> -->
+            <div id="edp-btns">
+                <input type="submit" value="Submit Edit" id="pf-button">
+                <a href="{% url 'entries' name=old_title %}" id="cancel-btn">Cancel</a>
+            </div>
         </form>
     </div>
     

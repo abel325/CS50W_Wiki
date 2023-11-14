@@ -40,7 +40,6 @@ body {
 }
 
 #navbar a:hover {
-    /* color: #146eff; */
     color: #004fce;
 }
 
@@ -315,6 +314,32 @@ body::-webkit-scrollbar-button:end:increment {
     background-color: #146eff;
 }
 
+#edp-btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+#edp-btns #cancel-btn {     
+    font-family: 'Roboto', sans-serif;
+    min-width: fit-content;
+    text-align: center;
+    font-size: 15px;
+    color: #fff;
+    background-color: #ea4335;
+    margin: 10px 0;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+#edp-btns #cancel-btn:hover {
+    cursor: pointer;
+    background-color: #e12717;;
+}
+
 /* <===================================================================> */
 /* For Confirm Delete Page */
 
@@ -380,6 +405,12 @@ body::-webkit-scrollbar-button:end:increment {
 #cd-btns #no-btn:hover {
     cursor: pointer;
     background-color: #146eff;
+}
+
+@media (max-width: 300px) {
+    #cd-btns {
+        flex-direction: column;
+    }
 }
 
 /* <===================================================================> */

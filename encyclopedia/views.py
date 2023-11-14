@@ -97,11 +97,9 @@ def edit_page(request):
                     "old_title": old_title
                 })
             
-            filename = f"entries/{old_title}.md"
-            if default_storage.exists(filename):
-                default_storage.delete(filename)
-            else:
+            if not util.delete_entry(old_title):
                 return HttpResponseRedirect(reverse('index'))
+            
             util.save_entry(title, dsc)
             return HttpResponseRedirect(reverse("entries", kwargs={"name": title}))
         else:
