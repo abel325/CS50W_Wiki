@@ -123,11 +123,17 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    /* Edited */
+    /* max-width: 700px;
+    margin: 20px auto; */
 }
 
 #container #p-title {
     font-size: 32px;
     margin-bottom: 20px;
+    /* position: -webkit-sticky;
+    position: sticky; */
 }
 
 #entries-list {
@@ -135,11 +141,41 @@ body {
     flex-direction: column;
     gap: 15px;
     list-style: none;
+
+    /* Edited */
+    align-items: center;
+
 }
 
 #entries-list .entry { 
     text-align: center;
+    
+    /* Edited */
+    /* border-bottom: solid 1px rgb(170, 170, 170); */
+    box-shadow: 0 4px 2px -2px rgba(170, 170, 170, 0.3);
+    border-radius: 6px;
+    /* border-left: 1px solid rgba(170, 170, 170, 0.3);
+    border-right: 1px solid rgba(170, 170, 170, 0.3); */
+    border-top: none;
+    padding: 10px 10px;
+    /* width: 100%; */
+    border-collapse: collapse;
 }
+
+#entries-list .entry:hover {
+    /* background-color: hsl(0, 0%, 96%); */
+    cursor: pointer;
+    /* background: linear-gradient(rgb(245, 245, 245), white); */
+    /* background: linear-gradient(rgba(245, 245, 245, 0.7), white); */
+    background: linear-gradient(white, rgb(245, 245, 245));
+    box-shadow: none;
+}
+
+
+
+/* #entries-list .entry:nth-child(1) {
+    border-top: solid 1px black;
+} */
 
 #entries-list .entry a {
     color: #2e7ffe;
@@ -148,7 +184,7 @@ body {
 
 #entries-list .entry a:hover {
     color: #146eff;
-    text-decoration: underline;
+    /* text-decoration: underline; */
 }
 
 /* <===================================================================> */
@@ -198,6 +234,9 @@ body {
     max-width: 1100px;
     margin: 0 auto;
     align-items: center;
+
+    /* Edited */
+    padding: 0 20px;
 }
 
 #npe-container #npe-title {
@@ -215,8 +254,14 @@ body {
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: 0 20px;
+    padding: 20px 20px; /* Edited 0 20px*/
     justify-content: space-between;
+
+    /* Edited */
+    box-shadow: 0px 0px 5px 5px rgba(170, 170, 170, 0.1);
+    /* border: solid 1px #afafaf; */
+    border-radius: 6px;
+
 }
 
 #p-form label {
@@ -239,6 +284,9 @@ body {
     outline: none;
     border: solid 1px #afafaf;
     border-radius: 6px;
+
+    /* Edited */
+    resize: vertical;
 }
 
 #p-form #pf-button {
