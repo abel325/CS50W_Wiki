@@ -1,11 +1,20 @@
 # Javascript Object
-```javascript
+<code>
+```js
 {  
  name: "John",  
  age: 25  
-}  
-```  
-| Syntax      | Description |  
-| ----------- | ----------- |  
-| Header      | Title       |  
-| Paragraph   | Text        |
+}
+```
+</code> 
+ 
+```python
+if True: 
+    print "hello"
+```
+<br>
+  
+| Syntax      | Description | Test Text     |
+| :---        |    :----:   |          ---: |
+| Header      | Title       | Here's this   |
+| Paragraph   | Text        | And more      |

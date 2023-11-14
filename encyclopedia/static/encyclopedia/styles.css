@@ -205,7 +205,11 @@ body::-webkit-scrollbar-button:end:increment {
     border-radius: 6px;
     line-height: 1.5;
     width: 100%;
-    padding: 20px;
+    padding: 20px;  
+}
+
+#dsc-card #dsc-html {
+    overflow-wrap: break-word;
 }
 
 #dsc-container ul, ol {

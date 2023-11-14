@@ -7,7 +7,7 @@
 {% block body %}
     <div id="dsc-container">
         <div id="dsc-card">
-            {{ entry | safe }}
+            <div id="dsc-html">{{ entry | safe }}</div>
             <div id="ed-btns-container">
                 <form action="{% url 'edit_page' %}" method="get">
                     <input type="hidden" name="title" value="{{ title }}">
