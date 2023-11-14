@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 from django.urls import reverse
 from django import forms
 import markdown2
@@ -97,11 +97,9 @@ def edit_page(request):
                     "old_title": old_title
                 })
             
-            filename = f"entries/{old_title}.md"
-            if default_storage.exists(filename):
-                default_storage.delete(filename)
-            else:
+            if not util.delete_entry(old_title):
                 return HttpResponseRedirect(reverse('index'))
+            
             util.save_entry(title, dsc)
             return HttpResponseRedirect(reverse("entries", kwargs={"name": title}))
         else:
@@ -124,3 +122,15 @@ def random_page(request):
     entries = util.list_entries()
     randp = choice(entries)
     return HttpResponseRedirect(reverse('entries', kwargs={'name': randp}))
+
+
+def delete_page(request, title):
+    if request.method == 'POST':
+        util.delete_entry(title)
+        return HttpResponseRedirect(reverse('index'))
+    raise Http404("Page not found")
+
+def confirm_delete(request, title):
+    if request.method == 'POST':
+        return render(request, "encyclopedia/confirm_delete.html", {"title": title})
+    raise Http404("Page not found")

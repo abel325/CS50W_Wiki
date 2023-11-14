@@ -15,7 +15,7 @@
         <div id="nav-container">
 
             <div id="logo"><a href="{% url 'index' %}">Wiki</a></div>
-            <form action="{% url 'search' %}">
+            <form action="{% url 'search' %}" autocomplete="off">
                 <input type="text" id="search" name="q" placeholder="Search Encyclopedia">
             </form>
             <div id="nav-links">
@@ -48,7 +48,7 @@
     
     <script>
         function toggleMenu() {
-            document.getElementById('dropdown_content-wrapper').classList.toggle('show');
+            document.getElementById('dropdown_content-wrapper').classList.toggle("show");
         }
     </script>
 </body>

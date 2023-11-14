@@ -40,7 +40,6 @@ body {
 }
 
 #navbar a:hover {
-    /* color: #146eff; */
     color: #004fce;
 }
 
@@ -187,13 +186,29 @@ body::-webkit-scrollbar-button:end:increment {
 /* <===================================================================> */
 /* For Entry Page */
 
-#dsc-container {
+/* #dsc-container {
     padding: 20px;
     line-height: 1.5;
     font-size: 18px;
+} */
+
+#dsc-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 20px 20px;
 }
 
-#dsc-container ul {
+#dsc-container #dsc-card {
+    box-shadow: 5px 5px 10px 5px rgba(170, 170, 170, 0.2);
+    border-radius: 6px;
+    line-height: 1.5;
+    width: 100%;
+    padding: 20px;
+}
+
+#dsc-container ul, ol {
     list-style-position: inside;
 }
 
@@ -201,7 +216,7 @@ body::-webkit-scrollbar-button:end:increment {
     font-size: 15px;
     color: #fff;
     background-color: #2e7ffe;
-    margin: 20px 0;
+    margin-top: 20px;
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
@@ -220,6 +235,34 @@ body::-webkit-scrollbar-button:end:increment {
 #dsc-container a:hover {
     color: #146eff;
     text-decoration: underline;
+}
+
+#dsc-container #delete-btn {
+    font-size: 15px;
+    color: #fff;
+    background-color: #ea4335;
+    margin-top: 20px;
+
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+}
+
+#dsc-container #delete-btn:hover {
+    cursor: pointer;
+    background-color: #e12717;;
+}
+
+#ed-btns-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media (max-width: 300px) {
+    #ed-btns-container {
+        flex-direction: column;
+    }
 }
 
 /* <===================================================================> */
@@ -284,7 +327,7 @@ body::-webkit-scrollbar-button:end:increment {
     font-size: 15px;
     color: #fff;
     background-color: #2e7ffe;
-    margin: 10px 0;
+    margin-top: 20px;
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
@@ -293,6 +336,115 @@ body::-webkit-scrollbar-button:end:increment {
 #p-form #pf-button:hover {
     cursor: pointer;
     background-color: #146eff;
+}
+
+#edp-btns {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+#edp-btns #cancel-btn {     
+    font-family: 'Roboto', sans-serif;
+    min-width: fit-content;
+    text-align: center;
+    font-size: 15px;
+    color: #fff;
+    background-color: #ea4335;
+    margin-top: 20px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+#edp-btns #cancel-btn:hover {
+    cursor: pointer;
+    background-color: #e12717;;
+}
+
+@media (max-width: 300px) {
+    #edp-btns {
+        flex-direction: column;
+    }
+
+    #p-form #pf-button {
+        align-self: center;
+    }
+}
+
+/* <===================================================================> */
+/* For Confirm Delete Page */
+
+#cd-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: center;
+    padding: 20px 20px;
+}
+
+#cd-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 20px 20px;
+    justify-content: space-between;
+    box-shadow: 5px 5px 10px 5px rgba(170, 170, 170, 0.2);
+    border-radius: 6px;
+}
+
+#cd-form #cd-title {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#cd-form #cd-btns {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+#cd-btns #yes-btn {
+    min-width: 100px;
+    font-size: 15px;
+    color: #fff;
+    background-color: #ea4335;
+    margin-top: 20px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+}
+
+#cd-btns #yes-btn:hover {
+    cursor: pointer;
+    background-color: #e12717;;
+}
+
+#cd-btns #no-btn {
+    min-width: 100px;
+    font-size: 15px;
+    color: #fff;
+    background-color: #2e7ffe;
+    margin-top: 20px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+}
+
+#cd-btns #no-btn:hover {
+    cursor: pointer;
+    background-color: #146eff;
+}
+
+@media (max-width: 300px) {
+    #cd-btns {
+        flex-direction: column;
+    }
 }
 
 /* <===================================================================> */
