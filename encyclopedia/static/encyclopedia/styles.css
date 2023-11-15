@@ -4,9 +4,14 @@
     padding: 0;
 }
 
+html {
+    height: 100%;
+}
+
 body {
     font-size: 16px;
     font-family: sans-serif;
+    height: calc(100% - 60px);
 }
 
 /* <===================================================================> */
@@ -131,11 +136,12 @@ body {
 
 #body-block {
     margin-top: 60px;
+    padding-bottom: 20px;
 }
 
 #body-block #container {
     max-width: 100%;
-    margin: 20px 20px;
+    margin: 20px 20px 0 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -168,10 +174,6 @@ body {
     box-shadow: none;
 }
 
-body::-webkit-scrollbar-button:end:increment {
-    height: 200px;
-}
-
 #entries-list .entry a {
     color: #2e7ffe;
     text-decoration: none;
@@ -186,18 +188,12 @@ body::-webkit-scrollbar-button:end:increment {
 /* <===================================================================> */
 /* For Entry Page */
 
-/* #dsc-container {
-    padding: 20px;
-    line-height: 1.5;
-    font-size: 18px;
-} */
-
 #dsc-container {
     display: flex;
     flex-direction: column;
     max-width: 1100px;
     margin: 0 auto;
-    padding: 20px 20px;
+    padding: 20px 20px 0 20px;
 }
 
 #dsc-container #dsc-card {
@@ -387,7 +383,7 @@ body::-webkit-scrollbar-button:end:increment {
     max-width: 1100px;
     margin: 0 auto;
     align-items: center;
-    padding: 20px 20px;
+    padding: 20px 20px 0 20px;
 }
 
 #cd-form {
@@ -449,6 +445,52 @@ body::-webkit-scrollbar-button:end:increment {
     #cd-btns {
         flex-direction: column;
     }
+}
+
+/* <===================================================================> */
+/* Error Page */
+
+#error-page-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 20px 0 20px;
+    margin: 0 auto;
+    max-width: 600px;
+}
+
+#error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#error-container #error404-message {
+    text-align: center;
+    font-size: 32px;
+}
+
+#error-container #error404-img {
+    width: 100%;
+    height: 100%;
+}
+
+#error404-home-redirect {
+    font-size: 15px;
+    color: #fff;
+    background-color: #2e7ffe;
+    margin-top: 20px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+#error404-home-redirect:hover {
+    cursor: pointer;
+    background-color: #146eff;
 }
 
 /* <===================================================================> */

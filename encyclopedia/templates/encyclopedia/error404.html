@@ -1,0 +1,22 @@
+{% extends "encyclopedia/layout.html" %}
+{% load static %}
+
+{% block title %}
+    ERROR404
+{% endblock %}
+
+
+{% block body %}
+
+<div id="error-page-container">
+    <div id="error-container">
+        <div id="error404-message">
+            <h1>Error 404</h1>
+            <h3>Page not found</h3>
+        </div>
+        <img src="{% static 'encyclopedia/error404.png' %}" alt="Error 404" id="error404-img">
+    </div>
+    <a href="{% url 'index' %}" id="error404-home-redirect">Go Home</a>
+</div>
+
+{% endblock %}
