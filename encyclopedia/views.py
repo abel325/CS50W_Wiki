@@ -23,17 +23,29 @@ def index(request):
 def entries(request, name):
     entry = util.get_entry(name)
     if entry != None:
-        htmlEntry = markdown2.markdown(entry)
+        htmlEntry = markdown2.markdown(entry, 
+        extras=
+        ["cuddled-lists",
+        "fenced-code-blocks",
+        "footnotes",
+        "header-ids",
+        "tables",
+        "spoiler",
+        "toc",
+        "wiki-tables",
+        "break-on-newline",
+        "link_patterns",
+        "spoiler",
+        "target-blank-links",
+        "tg-spoiler",
+        "task_list",
+        "mermaid"])
         return render(request, "encyclopedia/entries.html", {
             "title": name,
             "entry": htmlEntry,
         })
     else:
-        return render(request, "encyclopedia/entries.html", {
-            "title": "Error 404",
-            "entry": "<h1 style='text-align: center; font-size: 46px'> Error 404: file not found </h1>",
-            "hidden": "hidden",
-        })
+        return HttpResponseRedirect(reverse('error404', kwargs={'path': name}))
     
 
 def search(request):
@@ -128,9 +140,13 @@ def delete_page(request, title):
     if request.method == 'POST':
         util.delete_entry(title)
         return HttpResponseRedirect(reverse('index'))
-    raise Http404("Page not found")
+    return HttpResponseRedirect(reverse('error404', kwargs={'path': title}))
 
 def confirm_delete(request, title):
     if request.method == 'POST':
         return render(request, "encyclopedia/confirm_delete.html", {"title": title})
-    raise Http404("Page not found")
+    return HttpResponseRedirect(reverse('error404', kwargs={'path': title}))
+
+
+def error404(request, path):
+    return render(request, "encyclopedia/error404.html")
